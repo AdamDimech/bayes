@@ -26,7 +26,7 @@ pGrid <- seq( from=0, to=1, length.out=G)
 prior <- rep(1, G)
 
 #Compute likelihood
-likelihood <- dbinom(6, size=water+Land, prob=pGrid)
+likelihood <- dbinom(water, size=water+Land, prob=pGrid)
 
 #Compute product of likelihood and prior
 unstd.posterior <- likelihood * prior
@@ -36,4 +36,4 @@ unstd.posterior <- likelihood * prior
 posterior <- unstd.posterior / sum(unstd.posterior)
 
 plot( pGrid, posterior, type="b", xlab="Probability of Water", ylab = "Posterior probability")
-#mtext( "10 points")
+mtext( "10 points")
