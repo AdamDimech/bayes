@@ -13,6 +13,27 @@ N <- length(ourMeasuresF)
 water
 N
 
-# Grid approximation
+Land = N-water
 
-G=10
+# Grid approximation
+G <- 10
+pGrid <- seq( from=0, to=1, length.out=G)
+
+#Define prior
+#posterior = likelihood * prior / scaling_factor
+
+# Define the prior
+prior <- rep(1, G)
+
+#Compute likelihood
+likelihood <- dbinom(6, size=water+Land, prob=pGrid)
+
+#Compute product of likelihood and prior
+unstd.posterior <- likelihood * prior
+
+#Standardise the posterior, so it sums to 1
+
+posterior <- unstd.posterior / sum(unstd.posterior)
+
+plot( pGrid, posterior, type="b", xlab="Probability of Water", ylab = "Posterior probability")
+#mtext( "10 points")
