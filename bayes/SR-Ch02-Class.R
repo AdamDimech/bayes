@@ -1,3 +1,5 @@
+# Code written as part of Statistical Rethinking class on 2022-03-10
+
 # Clean up
 rm(list=ls())
 
