@@ -27,14 +27,20 @@ prior <- rep(1, G)
 
 #Compute likelihood
 #w ~ Binomial (N, p)
+# These don't sum to 1 because they are likelihoods, not probabilities
 likelihood <- dbinom(water, size=N, prob=pGrid)
 
 #Compute product of likelihood and prior
 unstd.posterior <- likelihood * prior
 
 #Standardise the posterior, so it sums to 1
-
 posterior <- unstd.posterior / sum(unstd.posterior)
 
+
+#Save plot
+
+png("plots/SR-2.3-posterior.png", width = 900, height = 500)
+
 plot( pGrid, posterior, type="b", xlab="Probability of Water", ylab = "Posterior probability")
-mtext( "10 points")
+
+dev.off()
