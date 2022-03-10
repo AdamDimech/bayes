@@ -26,7 +26,8 @@ pGrid <- seq( from=0, to=1, length.out=G)
 prior <- rep(1, G)
 
 #Compute likelihood
-likelihood <- dbinom(water, size=water+Land, prob=pGrid)
+#w ~ Binomial (N, p)
+likelihood <- dbinom(water, size=N, prob=pGrid)
 
 #Compute product of likelihood and prior
 unstd.posterior <- likelihood * prior
