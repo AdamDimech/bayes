@@ -44,5 +44,3 @@ posterior <- unstd.posterior / sum(unstd.posterior)
 png("plots/SR-2.3-posterior.png", width = 900, height = 500)
 
 plot( pGrid, posterior, type="b", xlab="Probability of Water", ylab = "Posterior probability")
-
-dev.off()
