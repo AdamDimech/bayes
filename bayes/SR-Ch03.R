@@ -45,3 +45,42 @@ sum(samples<0.5)/1e4
 sum(samples > 0.5 & samples < 0.75)/1e4
 #Output [1] 0.6054
 
+# Rcode 3.9
+quantile(samples, 0.8)
+# output:
+#      80% 
+#0.7597598 
+
+quantile(samples, c(0.1, 0.9))
+# Output:
+#        10%       90% 
+#  0.4504505 0.8158158 
+
+# Grid approximation
+p_grid <- seq(from=0, to=1, length.out=1000)
+prior <- rep(1, 1000)
+likelihood <- dbinom (3, size=3, prob=p_grid)
+posterior <- likelihood * prior
+posterior <- posterior / sum(posterior)
+samples <- sample(p_grid, size=1e4, replace=TRUE, prob=posterior)
+
+# Rcode 3.12
+PI(samples, prob=0.5)
+# Output:
+#        25%       75% 
+#  0.7087087 0.9299299 
+
+# Rcode 3.13
+HPDI(samples, prob=0.5)
+#Output:
+#     |0.5      0.5| 
+#0.8388388 1.0000000 
+
+
+PI(samples, prob=0.8)
+HPDI(samples, prob=0.8)
+
+PI(samples, prob=0.95)
+HPDI(samples, prob=0.95)
+
+
