@@ -34,3 +34,14 @@ dens(samples)
 png(filename="plots/SR-3.5-density-estimate.png")
 dens(samples)
 dev.off()
+
+# Intervals of defined boundaries (Rcode 3.6-3.8)
+sum(posterior[p_grid <0.5])
+# Output: [1] 0.1718746
+
+sum(samples<0.5)/1e4
+# Output: [1] 0.1726
+
+sum(samples > 0.5 & samples < 0.75)/1e4
+#Output [1] 0.6054
+
