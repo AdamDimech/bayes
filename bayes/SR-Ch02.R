@@ -58,5 +58,26 @@ curve ( dbeta (x, W+1, L+1), from=0, to=1 )
 curve ( dnorm( x, 0.67, 0.16), lty=2, add=TRUE)
 dev.off()
 
+# Add more samples (n=36, w = 24)
+
+globe.qa2 <- quap(
+  alist(
+    W ~ dbinom(W+L, p), #binomial likelihood
+    p ~ dunif(0,1) #uniform prior
+  ),
+  data=list(W=24, L=12) )
+
+precis( globe.qa2)
+
+W <- 24
+L <- 12
+curve ( dbeta (x, W+1, L+1), from=0, to=1 )
+curve ( dnorm( x, 0.67, 0.08), lty=2, add=TRUE)
+
+
+png(filename="plots/SR-2.7-quadratic-approximation-more-samples.png")
+curve ( dbeta (x, W+1, L+1), from=0, to=1 )
+curve ( dnorm( x, 0.67, 0.08), lty=2, add=TRUE)
+dev.off()
 
 
