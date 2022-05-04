@@ -15,3 +15,10 @@ posterior <- unstd.posterior / sum(unstd.posterior)
 
 plot( p_grid, posterior, type="b", xlab="Probability of Water", ylab = "Posterior probability")
 mtext( "20 points")
+
+# Save plot as PNG
+
+png(filename="plots/SR-2.3-posterior.png")
+plot( p_grid, posterior, type="b", xlab="Probability of Water", ylab = "Posterior probability")
+mtext( "20 points")
+dev.off()
