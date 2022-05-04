@@ -26,3 +26,11 @@ plot(samples)
 png(filename="plots/SR-3.4-sampling-parameter-values.png")
 plot(samples)
 dev.off()
+
+#Rcode 3.5
+library(rethinking)
+dens(samples)
+
+png(filename="plots/SR-3.5-density-estimate.png")
+dens(samples)
+dev.off()
