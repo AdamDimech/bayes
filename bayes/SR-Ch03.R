@@ -83,4 +83,6 @@ HPDI(samples, prob=0.8)
 PI(samples, prob=0.95)
 HPDI(samples, prob=0.95)
 
-
+# Maximum a posteriori Rcode 3.14/15
+p_grid[which.max(posterior)]
+chainmode(samples, adj=0.01)
