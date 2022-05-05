@@ -118,3 +118,11 @@ png(filename="plots/SR-3.24-dummy-water-count.png")
 simplehist(dummy_w, xlab="Dummy Water Count")
 dev.off()
 
+# Rcode 3.25
+w <- rbinom(1e4, size=9, prob=0.6)
+simplehist(w)
+
+png(filename="plots/SR-3.25-simulated-predictions.png")
+simplehist(w)
+dev.off()
+
