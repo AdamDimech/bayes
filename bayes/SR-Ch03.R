@@ -126,3 +126,10 @@ png(filename="plots/SR-3.25-simulated-predictions.png")
 simplehist(w)
 dev.off()
 
+# Rcode 3.26
+w <- rbinom(1e4, size=9, prob=samples)
+simplehist(w)
+
+png(filename="plots/SR-3.26-parameter-uncertainty.png")
+simplehist(w)
+dev.off()
