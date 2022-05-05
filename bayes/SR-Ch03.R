@@ -86,3 +86,35 @@ HPDI(samples, prob=0.95)
 # Maximum a posteriori Rcode 3.14/15
 p_grid[which.max(posterior)]
 chainmode(samples, adj=0.01)
+#[1] 0.9988292
+
+# Rcode 3.17
+sum(posterior*abs(0.5-p_grid))
+# [1] 0.3128752
+
+# Rcode 3.18
+loss <- sapply(p_grid, function(d) sum (posterior*abs(d-p_grid)))
+p_grid[which.min(loss)]
+# [1] 0.8408408
+
+#Rcode 3.20
+dbinom(0:2, size=2, prob=0.7)
+
+#Rcode 3.21
+rbinom(1, size=2, prob=0.7)
+
+#Rcode 3.22
+rbinom(10, size=2, prob=0.7)
+
+#Rcode 3.23
+dummy_w <- rbinom (1e5, size=2, prob=0.7)
+table(dummy_w)/1e5
+
+#Rcode 3.24
+dummy_w <- rbinom (1e5, size=9, prob=0.7)
+simplehist(dummy_w, xlab="Dummy Water Count")
+
+png(filename="plots/SR-3.24-dummy-water-count.png")
+simplehist(dummy_w, xlab="Dummy Water Count")
+dev.off()
+
