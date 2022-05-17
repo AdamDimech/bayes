@@ -25,3 +25,18 @@ dens(growth, norm.comp=TRUE)
 png(filename="plots/SR-4.3-normal-by-multiplication.png")
 dens(growth, norm.comp=TRUE)
 dev.off()
+
+#Rcode 4.4
+
+big <- replicate(10000, prod(1+runif(12,0,0.5)))
+
+png(filename="plots/SR-4.4-normal-by-multiplication-big.png")
+dens(big, norm.comp=TRUE)
+dev.off()
+
+small <- replicate(10000, prod(1+runif(12,0,0.01)))
+
+png(filename="plots/SR-4.4-normal-by-multiplication-small.png")
+dens(small, norm.comp=TRUE)
+dev.off()
+
