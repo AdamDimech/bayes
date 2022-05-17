@@ -21,3 +21,7 @@ prod(1+runif(12,0,0.1))
 #Rcode 4.3
 growth <- replicate(1000, prod(1+runif(12,0,0.1)))
 dens(growth, norm.comp=TRUE)
+
+png(filename="plots/SR-4.3-normal-by-multiplication.png")
+dens(growth, norm.comp=TRUE)
+dev.off()
