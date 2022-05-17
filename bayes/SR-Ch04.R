@@ -40,3 +40,8 @@ png(filename="plots/SR-4.4-normal-by-multiplication-small.png")
 dens(small, norm.comp=TRUE)
 dev.off()
 
+# Rcode 4.5
+log.big <- replicate(10000, log(prod(1+runif(12,0,0.01))))
+png(filename="plots/SR-4.4-normal-by-multiplication-log-big.png")
+dens(log.big, norm.comp=TRUE)
+dev.off()
