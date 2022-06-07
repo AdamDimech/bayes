@@ -10,7 +10,7 @@ Variables are defined in terms of other variables or in terms of a probability d
 
 For example, a model could be summarised as follows:
 
-$y_i\sim \textup{Normal}(\mu_i, \sigma )$ or $y_i\sim \mathcal{N}(\mu_i, \sigma )$
+<p align="center">$y_i\sim \textup{Normal}(\mu_i, \sigma )$ or $y_i\sim \mathcal{N}(\mu_i, \sigma )$</p>
 
 $$ \mu_i = \beta x_i $$
 
