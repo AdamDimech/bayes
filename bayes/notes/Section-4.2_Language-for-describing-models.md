@@ -26,9 +26,15 @@ $$ W \sim \textup{Binomial}(N, p) $$
 
 $$ p \sim \textup{Uniform}(0, 1) $$
 
-- The count of $W$ is distributed binomially with sample size $N$ and probabiliyy $p$.
-- The prior for $p$ is assumed to be unform between 0 and 1.
+The count of $W$ is distributed binomially with sample size $N$ and probability $p$.
+The prior for $p$ is assumed to be unform between 0 and 1.
 
 Related to Bayes' theorem:
 
 $$ Pr(p\mid w,n)= \frac{\textup{Binomial}(W\mid n,p)\textup{Uniform}(p\mid 0,1)}{\int \textup{Binomial}(w\mid n,p)\textup{Uniform}(p\mid 0,1)dp}\ $$
+
+## Gaussian Distribution
+
+A Gaussian (normal) distribution with mean $\mu$ and standard deviation $\sigma$ is:
+
+$$ Pr(y\mid \mu,\sigma)= \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left ( -\frac{(y-\mu)^2}{2\sigma^2} \right ) $$
