@@ -45,3 +45,19 @@ log.big <- replicate(10000, log(prod(1+runif(12,0,0.01))))
 png(filename="plots/SR-4.4-normal-by-multiplication-log-big.png")
 dens(log.big, norm.comp=TRUE)
 dev.off()
+
+# Rcode 4.6
+w <- 6;
+n <- 9;
+p_grid <- seq(from=0, to=1, length.out=100)
+posterior <- dbinom(w, n, p_grid)*dunif(p_grid, 0, 1)
+posterior <- posterior/sum(posterior)
+plot(posterior)
+
+# Rcode 4.7-4.11
+data(Howell1)
+d <- Howell1
+str(d)
+precis(d, hist=FALSE)
+d$height
+d2 <- d[d$age >=18, ]
