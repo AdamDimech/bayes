@@ -109,3 +109,13 @@ dev.off()
 png(filename="plots/SR-4.18-heat-plot.png")
 image_xyz (post$mu, post$sigma, post$prob)
 dev.off()
+
+# Rcode 4.19
+
+sample.rows <- sample(1:nrow(post), size=1e4, replace=TRUE, prob=post$prob)
+sample.mu <- post$mu[sample.rows]
+sample.sigma <- post$sigma[sample.rows]
+
+png(filename="plots/SR-4.20-samples-posterior-height-data.png")
+plot(sample.mu, sample.sigma, cex=1, pch=16, col=col.alpha(rangi2, 0.1))
+dev.off()
