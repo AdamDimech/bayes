@@ -119,3 +119,4 @@ sample.sigma <- post$sigma[sample.rows]
 png(filename="plots/SR-4.20-samples-posterior-height-data.png")
 plot(sample.mu, sample.sigma, cex=1, pch=16, col=col.alpha(rangi2, 0.1))
 dev.off()
+
