@@ -133,8 +133,30 @@ dens(sample.sigma)
 dev.off()
 
 # Rcode 4.22
+
 PI(sample.mu)
 PI(sample.sigma)
 
+# Rcode 4.23
+d3 <- sample(d2$height, size=20)
 
+# Rcode 4.24
+mu.list<-seq(from=150,to=170,length.out=200)
+sigma.list<-seq(from=4,to=20,length.out=200)
+post2<-expand.grid(mu=mu.list,sigma=sigma.list)
+post2$LL<-sapply(1:nrow(post2),function(i)
+sum(dnorm(d3,mean=post2$mu[i],sd=post2$sigma[i],log=TRUE)))
+post2$prod<-post2$LL+dnorm(post2$mu,178,20,TRUE)+dunif(post2$sigma,0,50,TRUE)
+post2$prob<-exp(post2$prod-max(post2$prod))
+sample2.rows<-sample(1:nrow(post2),size=1e4,replace=TRUE,prob=post2$prob)
+sample2.mu<-post2$mu[sample2.rows]
+sample2.sigma<-post2$sigma[sample2.rows]
 
+png(filename="plots/SR-4.24-posterior-density-mu.png")
+plot(sample2.mu,sample2.sigma,cex=0.5, col=col.alpha(rangi2,0.1), xlab="mu",ylab="sigma",pch=16)
+dev.off()
+
+# Rcode 4.25
+png(filename="plots/SR-4.25-marginal-posterior-density.png")
+dens(sample2.sigma, norm.comp=TRUE)
+dev.off()
