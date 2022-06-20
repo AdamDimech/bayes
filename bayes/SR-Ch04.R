@@ -116,7 +116,25 @@ sample.rows <- sample(1:nrow(post), size=1e4, replace=TRUE, prob=post$prob)
 sample.mu <- post$mu[sample.rows]
 sample.sigma <- post$sigma[sample.rows]
 
+# Rcode 4.20
+
 png(filename="plots/SR-4.20-samples-posterior-height-data.png")
-plot(sample.mu, sample.sigma, cex=1, pch=16, col=col.alpha(rangi2, 0.1))
+plot(sample.mu, sample.sigma, cex=0.6, pch=16, col=col.alpha(rangi2, 0.1))
 dev.off()
+
+# Rcode 4.21
+
+png(filename="plots/SR-4.21-density_of_mu.png")
+dens(sample.mu)
+dev.off()
+
+png(filename="plots/SR-4.21-density_of_sigma.png")
+dens(sample.sigma)
+dev.off()
+
+# Rcode 4.22
+PI(sample.mu)
+PI(sample.sigma)
+
+
 
