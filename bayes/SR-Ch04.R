@@ -167,3 +167,9 @@ d2 <- d[d$age>=18,]
 
 # Rcode 4.27
 flist <- alist(height ~ dnorm(mu, sigma), mu ~ dnorm(178, 20), sigma ~ dunif(0, 50))
+
+# Rcode 4.28
+m4.1 <- quap(flist, data=d2)
+
+# Rcode 4.29
+precis(m4.1)
