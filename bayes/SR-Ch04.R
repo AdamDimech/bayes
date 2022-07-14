@@ -160,3 +160,10 @@ dev.off()
 png(filename="plots/SR-4.25-marginal-posterior-density.png")
 dens(sample2.sigma, norm.comp=TRUE)
 dev.off()
+
+# Rcode 4.26
+d <- Howell1
+d2 <- d[d$age>=18,]
+
+# Rcode 4.27
+flist <- alist(height ~ dnorm(mu, sigma), mu ~ dnorm(178, 20), sigma ~ dunif(0, 50))
