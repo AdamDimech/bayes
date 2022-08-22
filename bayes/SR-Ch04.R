@@ -290,3 +290,11 @@ m4.3 <- quap(
     sigma ~ dunif( 0 , 50 )
   ) ,
   data=d2 )
+
+# Rcode 4.44
+
+precis(m4.3)
+
+# Rcode 4.45
+
+round(vcov(m4.3), 3)
