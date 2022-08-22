@@ -189,3 +189,9 @@ vcov(m4.1)
 # Rcode 4.33
 diag(vcov(m4.1))
 cov2cor(vcov(m4.1))
+
+# Rcode 4.34 (Sampling vectors of values from a multi-dimensional Gaussian distribution)
+post <- extract.samples(m4.1, n=1e4)
+
+head(post) # View head
+write.csv(post, "tables/4.34_post.csv") # Write to CSV
