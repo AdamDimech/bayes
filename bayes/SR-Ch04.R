@@ -298,3 +298,13 @@ precis(m4.3)
 # Rcode 4.45
 
 round(vcov(m4.3), 3)
+
+# Rcode 4.46
+
+png(filename="plots/SR-4.46-posterior-mean-values.png")
+plot( height ~ weight , data=d2 , col=rangi2 )
+post <- extract.samples( m4.3 )
+a_map <- mean(post$a)
+b_map <- mean(post$b)
+curve( a_map + b_map*(x - xbar) , add=TRUE )
+dev.off()
