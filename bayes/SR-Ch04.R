@@ -182,3 +182,10 @@ m4.2 <- quap(
     sigma ~ dunif (0,50)
   ), data=d2 )
 precis(m4.2)
+
+# Rcode 4.32
+vcov(m4.1)
+
+# Rcode 4.33
+diag(vcov(m4.1))
+cov2cor(vcov(m4.1))
