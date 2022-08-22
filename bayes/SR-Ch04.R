@@ -272,3 +272,21 @@ xbar <- mean(d2$weight)
 for ( i in 1:N ) curve( a[i] + b[i]*(x - xbar) ,
                         from=min(d2$weight) , to=max(d2$weight) , add=TRUE ,
                         col=col.alpha("black",0.2) )
+
+# Rcode 4.42
+
+data(Howell1)
+d <- Howell1
+d2 <- d[ d$age >= 18 , ]
+
+xbar <- mean(d2$weight)
+
+m4.3 <- quap(
+  alist(
+    height ~ dnorm( mu , sigma ) ,
+    mu <- a + b*( weight - xbar ) ,
+    a ~ dnorm( 178 , 20 ) ,
+    b ~ dlnorm( 0 , 1 ) ,
+    sigma ~ dunif( 0 , 50 )
+  ) ,
+  data=d2 )
