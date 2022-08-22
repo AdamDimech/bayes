@@ -216,3 +216,14 @@ dev.off()
 
 head(post)
 write.csv(post, "tables/4.36_post_mvrnorm.csv")
+
+## 4.4 Linear Prediction ##
+
+# Rcode 4.37
+
+data(Howell1); d <- Howell1; d2 <- d[d$age >= 18, ]
+
+png(filename="plots/SR-4.37-plot-adult-height-weight.png")
+plot(d2$height ~ d2$weight)
+dev.off()
+
