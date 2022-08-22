@@ -227,4 +227,9 @@ png(filename="plots/SR-4.37-plot-adult-height-weight.png")
 plot(d2$height ~ d2$weight)
 dev.off()
 
+# Rcode 4.38
 
+set.seed(2971)
+N <- 100
+a <- rnorm(N, 178, 20)
+b <- rnorm(N, 0, 10)
