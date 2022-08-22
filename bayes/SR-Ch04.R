@@ -173,3 +173,12 @@ m4.1 <- quap(flist, data=d2)
 
 # Rcode 4.29
 precis(m4.1)
+
+# Rcode 4.31
+m4.2 <- quap(
+  alist(
+    height ~ dnorm (mu, sigma),
+    mu ~ dnorm (178, 0.1),
+    sigma ~ dunif (0,50)
+  ), data=d2 )
+precis(m4.2)
