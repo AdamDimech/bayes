@@ -350,3 +350,21 @@ post <- extract.samples(m4.3)
 mu_at_50 <- post$a + post$b * (50-xbar)
 write.csv(mu_at_50, "tables/4.50_mu_at_fifty.csv")
 
+# Rcode 4.51
+
+png(filename="plots/SR-4.51-mu-at-fifty.png")
+dens( mu_at_50 , col=rangi2 , lwd=2 , xlab="mu|weight=50" )
+dev.off()
+
+# Rcode 4.52
+
+PI(mu_at_50, prob=0.89)
+
+# Rcode 4.53
+mu <- link(m4.3)
+str(mu)
+
+# Rcode 4.54
+weight.seq <- seq(from=25, to=70, by=1)
+mu <- link( m4.3 , data=data.frame(weight=weight.seq) )
+str(mu)
