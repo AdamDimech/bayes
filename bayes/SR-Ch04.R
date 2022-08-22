@@ -313,3 +313,14 @@ dev.off()
 post <- extract.samples(m4.3)
 post[1:5,]
 
+# Rcode  4.48
+N <- 10
+dN <- d2[ 1:N , ]
+mN <- quap(
+  alist(
+    height ~ dnorm( mu , sigma ) ,
+    mu <- a + b*( weight - mean(weight) ) ,
+    a ~ dnorm( 178 , 20 ) ,
+    b ~ dlnorm( 0 , 1 ) ,
+    sigma ~ dunif( 0 , 50 )
+  ) , data=dN )
