@@ -247,3 +247,12 @@ for ( i in 1:N ) curve( a[i] + b[i]*(x - xbar) ,
                         from=min(d2$weight) , to=max(d2$weight) , add=TRUE ,
                         col=col.alpha("black",0.2) )
 dev.off()
+
+# Rcode 4.40
+
+b <- rlnorm(1e4, 0, 1)
+
+png(filename="plots/SR-4.40-log-normal-beta.png")
+dens(b, xlim(c(0, 5)), adj=0.1)
+dev.off()
+
