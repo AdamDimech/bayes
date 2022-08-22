@@ -195,3 +195,24 @@ post <- extract.samples(m4.1, n=1e4)
 
 head(post) # View head
 write.csv(post, "tables/4.34_post.csv") # Write to CSV
+
+# Rcode 4.35
+precis(post)
+
+png(filename="plots/SR-4.35-quap-posterior-post.png")
+plot(post)
+dev.off()
+
+precis(m4.1)
+
+# Rcode 4.36
+library (MASS)
+post <- mvrnorm(n=1e4, mu=coef(m4.1), Sigma=vcov(m4.1))
+precis(post)
+
+png(filename="plots/SR-4.36-mvrnorm.png")
+plot(post)
+dev.off()
+
+head(post)
+write.csv(post, "tables/4.36_post_mvrnorm.csv")
