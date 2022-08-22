@@ -324,3 +324,29 @@ mN <- quap(
     b ~ dlnorm( 0 , 1 ) ,
     sigma ~ dunif( 0 , 50 )
   ) , data=dN )
+
+# Rcode 4.49
+
+post <- extract.samples( mN , n=20 )
+
+png(filename="plots/SR-4.49-quadratic-approximate-posterior-distribution-height-weight-model.png")
+
+plot( dN$weight , dN$height ,
+      xlim=range(d2$weight) , ylim=range(d2$height) ,
+      col=rangi2 , xlab="weight" , ylab="height" )
+mtext(concat("N = ",N))
+
+for ( i in 1:20 )
+  curve( post$a[i] + post$b[i]*(x-mean(dN$weight)) ,
+         col=col.alpha("black",0.3) , add=TRUE )
+
+dev.off()
+
+
+# Rcode 4.50
+
+post <- extract.samples(m4.3)
+
+mu_at_50 <- post$a + post$b * (50-xbar)
+write.csv(mu_at_50, "tables/4.50_mu_at_fifty.csv")
+
