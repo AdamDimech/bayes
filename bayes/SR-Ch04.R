@@ -374,3 +374,13 @@ str(mu)
 plot( height ~ weight , d2 , type="n" )
 for ( i in 1:100 )
   points( weight.seq , mu[i,] , pch=16 , col=col.alpha(rangi2,0.1) )
+
+# Rcode 4.56
+mu.mean <- apply( mu , 2 , mean )
+mu.PI <- apply( mu , 2 , PI , prob=0.89 )
+
+# Rcode 4.57
+plot( height ~ weight , data=d2 , col=col.alpha(rangi2,0.5) )
+lines( weight.seq , mu.mean )
+shade( mu.PI , weight.seq )
+
