@@ -308,3 +308,8 @@ a_map <- mean(post$a)
 b_map <- mean(post$b)
 curve( a_map + b_map*(x - xbar) , add=TRUE )
 dev.off()
+
+# Rcode 4.47
+post <- extract.samples(m4.3)
+post[1:5,]
+
