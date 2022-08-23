@@ -388,3 +388,21 @@ shade( mu.PI , weight.seq )
 dev.off()
 
 
+# Rcode 4.59
+
+sim.height <- sim(m4.3, data=list(weight=weight.seq))
+str(sim.height)
+write.csv(sim.height, "tables/4.59_sim_height.csv")
+
+# Rcode 4.60
+
+height.PI <- apply(sim.height, 2, PI, prob=0.89)
+
+# Rcode 4.61
+
+plot( height ~ weight , d2 , col=col.alpha(rangi2,0.5) )
+lines( weight.seq , mu.mean )
+shade( mu.PI , weight.seq ) # Book says mu.HPDI
+shade( height.PI , weight.seq )
+
+#
