@@ -415,3 +415,15 @@ sim.height <- sapply( weight.seq , function(weight)
     mean=post$a + post$b*( weight - xbar ) ,
     sd=post$sigma ) )
 height.PI <- apply( sim.height , 2 , PI , prob=0.89 )
+
+## 4.5 Curves from lines ##
+
+# Rcode 4.64
+
+library(rethinking)
+data(Howell1)
+d <- Howell1
+
+png(filename="plots/SR-4.64-height-weight-all-ages.png")
+plot(height ~ weight, d)
+dev.off()
