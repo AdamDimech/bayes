@@ -405,4 +405,13 @@ lines( weight.seq , mu.mean )
 shade( mu.PI , weight.seq ) # Book says mu.HPDI
 shade( height.PI , weight.seq )
 
-#
+# Rcode 4.63
+
+post <- extract.samples(m4.3)
+weight.seq <- 25:70
+sim.height <- sapply( weight.seq , function(weight)
+  rnorm(
+    n=nrow(post) ,
+    mean=post$a + post$b*( weight - xbar ) ,
+    sd=post$sigma ) )
+height.PI <- apply( sim.height , 2 , PI , prob=0.89 )
