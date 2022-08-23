@@ -427,3 +427,6 @@ d <- Howell1
 png(filename="plots/SR-4.64-height-weight-all-ages.png")
 plot(height ~ weight, d)
 dev.off()
+
+
+
