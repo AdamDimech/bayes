@@ -380,7 +380,11 @@ mu.mean <- apply( mu , 2 , mean )
 mu.PI <- apply( mu , 2 , PI , prob=0.89 )
 
 # Rcode 4.57
+
+png(filename="plots/SR-4.57-89pc-interval-of-the-mean-height-weight.png")
 plot( height ~ weight , data=d2 , col=col.alpha(rangi2,0.5) )
 lines( weight.seq , mu.mean )
 shade( mu.PI , weight.seq )
+dev.off()
+
 
