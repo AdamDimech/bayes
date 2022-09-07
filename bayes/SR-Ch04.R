@@ -524,3 +524,18 @@ png(filename="plots/SR-4.75-year-vs-basis-value.png")
 plot( NULL , xlim=range(d2$year) , ylim=c(0,1) , xlab="year" , ylab="basis value" )
 for ( i in 1:ncol(B) ) lines( d2$year , B[,i] )
 dev.off()
+
+# Rcode 4.76
+
+m4.7 <- quap(
+  alist(
+    T ~ dnorm( mu , sigma ) ,
+    mu <- a + B %*% w ,
+    a ~ dnorm(6,10),
+    w ~ dnorm(0,1),
+    sigma ~ dexp(1)
+  ),
+  data=list( T=d2$doy , B=B ) ,
+  start=list( w=rep( 0 , ncol(B) ) ) )
+
+precis(m4.7, depth=2)
