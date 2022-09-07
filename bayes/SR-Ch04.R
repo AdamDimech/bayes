@@ -428,5 +428,20 @@ png(filename="plots/SR-4.64-height-weight-all-ages.png")
 plot(height ~ weight, d)
 dev.off()
 
+# Rcode 4.65
+
+d$weight_s <- ( d$weight - mean(d$weight) )/sd(d$weight)
+d$weight_s2 <- d$weight_s^2
+m4.5 <- quap(
+  alist(
+    height ~ dnorm( mu , sigma ) ,
+    mu <- a + b1*weight_s + b2*weight_s2 ,
+    a ~ dnorm( 178 , 20 ) ,
+    b1 ~ dlnorm( 0 , 1 ) ,
+    b2 ~ dnorm( 0 , 1 ) ,
+    sigma ~ dunif( 0 , 50 )
+  ) ,
+  data=d )
+
 
 
