@@ -511,3 +511,11 @@ d2 <- d[complete.cases(d$doy), ]
 num_knots <- 15
 knot_list <- quantile(d2$year, probs=seq(0, 1, length.out=num_knots))
 write.csv(knot_list, "tables/4.73_knot_list.csv")
+
+# Rcode 4.74
+
+library(splines)
+B <- bs(d2$year, knots=knot_list[-c(1, num_knots)], degree=3, intercept=TRUE)
+write.csv(B, "tables/4.74_polynomial_degree.csv")
+
+
