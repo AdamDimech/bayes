@@ -501,4 +501,9 @@ data(cherry_blossoms)
 d <- cherry_blossoms
 precis(d)
 
+#p.115
+library(ggplot2)
+ggplot(d, aes(x=year, y=doy)) + geom_point() + scale_x_continuous(name ="Year") + scale_y_continuous(name ="Day of the Year")
+ggsave("PLOTS/SR-4.72-Hanami.png", plot = last_plot(), device = png(), units="cm", width=30, height=20, scale=1)
+
 
