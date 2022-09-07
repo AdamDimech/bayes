@@ -457,7 +457,11 @@ sim.height <- sim( m4.5 , data=pred_dat )
 height.PI <- apply( sim.height , 2 , PI , prob=0.89 )
 
 # Rcode 4.68
+
+png(filename="plots/SR-4.68-polynomial-regressions.png")
 plot( height ~ weight_s , d , col=col.alpha(rangi2,0.5) )
 lines( weight.seq , mu.mean )
 shade( mu.PI , weight.seq )
 shade( height.PI , weight.seq )
+dev.off()
+
