@@ -518,4 +518,9 @@ library(splines)
 B <- bs(d2$year, knots=knot_list[-c(1, num_knots)], degree=3, intercept=TRUE)
 write.csv(B, "tables/4.74_polynomial_degree.csv")
 
+# Rcode 4.75
 
+png(filename="plots/SR-4.75-year-vs-basis-value.png")
+plot( NULL , xlim=range(d2$year) , ylim=c(0,1) , xlab="year" , ylab="basis value" )
+for ( i in 1:ncol(B) ) lines( d2$year , B[,i] )
+dev.off()
