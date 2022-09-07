@@ -443,5 +443,7 @@ m4.5 <- quap(
   ) ,
   data=d )
 
+# Rcode 4.66
+precis(m4.5)
 
 
