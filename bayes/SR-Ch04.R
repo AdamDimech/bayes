@@ -506,4 +506,8 @@ library(ggplot2)
 ggplot(d, aes(x=year, y=doy)) + geom_point() + scale_x_continuous(name ="Year") + scale_y_continuous(name ="Day of the Year")
 ggsave("PLOTS/SR-4.72-Hanami.png", plot = last_plot(), device = png(), units="cm", width=30, height=20, scale=1)
 
-
+# Rcode 4.73
+d2 <- d[complete.cases(d$doy), ]
+num_knots <- 15
+knot_list <- quantile(d2$year, probs=seq(0, 1, length.out=num_knots))
+write.csv(knot_list, "tables/4.73_knot_list.csv")
