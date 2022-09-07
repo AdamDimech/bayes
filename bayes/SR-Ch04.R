@@ -492,4 +492,13 @@ lines( weight.seq , mu.mean )
 shade( mu.PI , weight.seq )
 shade( height.PI , weight.seq )
 
+# Splines
+
+# Rcode 4.72
+
+library(rethinking)
+data(cherry_blossoms)
+d <- cherry_blossoms
+precis(d)
+
 
