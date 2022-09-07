@@ -539,3 +539,13 @@ m4.7 <- quap(
   start=list( w=rep( 0 , ncol(B) ) ) )
 
 precis(m4.7, depth=2)
+
+# Rcode 4.77
+post <- extract.samples(m4.7)
+w <- apply( post$w , 2 , mean )
+
+png(filename="plots/SR-4.77-weighted-basis-functions.png")
+plot( NULL , xlim=range(d2$year) , ylim=c(-2,2) ,
+      xlab="year" , ylab="basis * weight" )
+for ( i in 1:ncol(B) ) lines( d2$year , w[i]*B[,i] )
+dev.off()
