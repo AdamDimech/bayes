@@ -545,7 +545,7 @@ post <- extract.samples(m4.7)
 w <- apply( post$w , 2 , mean )
 
 png(filename="plots/SR-4.77-weighted-basis-functions.png")
-plot( NULL , xlim=range(d2$year) , ylim=c(-2,2) ,
+plot( NULL , xlim=range(d2$year) , ylim=c(-6,6) ,
       xlab="year" , ylab="basis * weight" )
 for ( i in 1:ncol(B) ) lines( d2$year , w[i]*B[,i] )
 dev.off()
