@@ -33,3 +33,19 @@ png(filename="plots/SR-5.4-simulate-from-priors.png")
 plot(NULL, xlim=c(-2,2), ylim=c(-2,2))
 for(i in 1:50) lines(c(-2, 2), mu[i,], col=col.alpha("black", 0.4))
 dev.off()
+
+# Posterior predictions (Rcode 5.5)
+## compute percentile interval of mean
+A_seq <- seq(from=-3 , to=3.2 , length.out=30)
+mu <- link(m5.1, data=list(A=A_seq))
+mu.mean <- apply(mu, 2, mean)
+mu.PI <- apply(mu, 2, PI)
+
+## plot it all
+png(filename="plots/SR-5.5-posterior-predictions.png")
+plot(D ~ A, data=d, col=rangi2)
+lines(A_seq, mu.mean, lwd=2)
+shade(mu.PI, A_seq)
+dev.off()
+
+
