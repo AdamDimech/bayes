@@ -48,4 +48,34 @@ lines(A_seq, mu.mean, lwd=2)
 shade(mu.PI, A_seq)
 dev.off()
 
+# Rcode 5.6
+d$M <- scale(d$Marriage)
+m5.2 <- quap(
+  alist(
+    D ~ dnorm(mu, sigma),
+    mu <- a + bM * M,
+    a ~ dnorm(0, 0.2),
+    bM ~ dnorm(0, 0.5),
+    sigma ~ dexp(1)
+  ), data = d)
+
+set.seed(10)
+prior <- extract.prior(m5.2)
+mu <- link(m5.2, post=prior, data=list(M=c(-2,2)))
+png(filename="plots/SR-5.6-simulate-from-priors.png")
+plot(NULL, xlim=c(-2,2), ylim=c(-2,2))
+for(i in 1:50) lines(c(-2, 2), mu[i,], col=col.alpha("black", 0.4))
+dev.off()
+
+M_seq <- seq(from=-3 , to=3.2 , length.out=30)
+mu <- link(m5.2, data=list(M=M_seq))
+mu.mean <- apply(mu, 2, mean)
+mu.PI <- apply(mu, 2, PI)
+
+png(filename="plots/SR-5.6-posterior-predictions.png")
+plot(D ~ M, data=d, col=rangi2)
+lines(M_seq, mu.mean, lwd=2)
+shade(mu.PI, M_seq)
+dev.off()
+
 
